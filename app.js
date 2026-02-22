@@ -12,6 +12,10 @@ const allowedOrigins = [
     'http://localhost:5173',
     'https://localhost:5173',
     'https://interplayerdex.ingthing.co.uk/',
+    'https://ingthing.co.uk',
+    'https://www.ingthing.co.uk',
+    'http://ingthing.co.uk',
+    'http://www.ingthing.co.uk',
     process.env.FRONTEND_URL,
 ].filter(Boolean);
 
