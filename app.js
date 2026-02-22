@@ -11,12 +11,31 @@ const allowedOrigins = [
     'https://localhost:3001',
     'http://localhost:5173',
     'https://localhost:5173',
+    'https://interplayerdex.ingthing.co.uk',
+    'https://ingthing.co.uk',
+    'https://www.ingthing.co.uk',
+    'http://ingthing.co.uk',
+    'http://www.ingthing.co.uk',
     process.env.FRONTEND_URL,
 ].filter(Boolean);
 
+function isAllowedOrigin(origin) {
+    if (!origin) return true;
+    const normalized = origin.replace(/\/$/, ''); // strip trailing slash
+    if (allowedOrigins.includes(origin) || allowedOrigins.includes(normalized)) return true;
+    // Allow any subdomain of ingthing.co.uk (e.g. interplayerdex.ingthing.co.uk)
+    try {
+        const u = new URL(origin);
+        const host = u.hostname.toLowerCase();
+        return host === 'ingthing.co.uk' || host.endsWith('.ingthing.co.uk');
+    } catch {
+        return false;
+    }
+}
+
 app.use(cors({
     origin: (origin, cb) => {
-        if (!origin || allowedOrigins.includes(origin)) return cb(null, true);
+        if (isAllowedOrigin(origin)) return cb(null, true);
         cb(null, false);
     },
     credentials: true,
