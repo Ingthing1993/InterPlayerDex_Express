@@ -144,24 +144,6 @@ The React app lives in `client/` (Vite + React). It calls this API using the bas
 
 ---
 
-## Before you make the repo public
-
-Run this checklist so no secrets or sensitive files go up:
-
-1. **Confirm `.env` is not committed**
-   - Run: `git status` and ensure `.env` does **not** appear under “Changes to be committed” or as a tracked file.
-   - `.env` is listed in `.gitignore`; never remove it. Your real `MONGO_URI` and any API keys must stay only in `.env` on your machine.
-
-2. **Confirm what will be pushed**
-   - Run: `git status` and `git diff` (or use your IDE) and make sure no file contains real connection strings, passwords, or API keys.
-   - Only `.env.example` (with placeholders) should document env vars; never commit `.env`.
-
-3. **If `.env` was ever committed in the past** (e.g. in another branch or before adding it to `.gitignore`), **rotate your MongoDB password** (and any other secrets that were in it) in MongoDB Atlas (or your DB provider) and update your local `.env`. Old commits can still expose secrets.
-
-4. **Optional:** Add a short description and topics (e.g. `nodejs`, `express`, `mongodb`, `rest-api`) on the GitHub repo page. License is already ISC in `package.json`.
-
----
-
 ## Principles and resources
 
 This project follows patterns that scale well and keep the codebase clear. Below are the main principles and where to read more.
