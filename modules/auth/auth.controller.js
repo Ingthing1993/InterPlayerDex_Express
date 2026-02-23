@@ -46,6 +46,8 @@ const me = async (req, res) => {
 
 module.exports = {
     register,
-    login,
+    login,  
+    refresh,
+    me,
     logout,
 };
