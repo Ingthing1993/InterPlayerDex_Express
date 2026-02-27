@@ -10,7 +10,13 @@ const createPlayer = async (req, res) => {
     res.json(player);
 };
 
+const updatePlayer = async (req, res) => {
+    const player = await playerModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    res.json(player);
+};
+
 module.exports = {
     getPlayers,
     createPlayer,
+    updatePlayer,
 };  
