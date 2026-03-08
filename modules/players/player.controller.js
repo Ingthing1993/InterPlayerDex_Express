@@ -6,8 +6,14 @@ const getPlayers = async (req, res) => {
 };
 
 const createPlayer = async (req, res) => {
-    const player = await playerModel.create(req.body);
-    res.json(player);
+    const player = req.body
+    // check if player is created
+    if (!player) {
+        return res.status(400).json({ message: 'Player not created' });
+    }
+    const newPlayer = await playerModel.create(player);
+    res.json(newPlayer);
+
 };
 
 const updatePlayer = async (req, res) => {
